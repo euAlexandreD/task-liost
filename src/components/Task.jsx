@@ -18,10 +18,6 @@ const Tasks = () => {
 
     const [tasks, setTasks] = useState([]);
 
-    const deleteTask = () => {
-        setTasks([""]);
-    };
-
     useEffect(() => {
         fetchTasks();
     }, []);
@@ -37,7 +33,7 @@ const Tasks = () => {
                         {tasks
                             .filter((task) => task.isCompleted === false)
                             .map((lastTask) => (
-                                <p>{lastTask.description}</p>
+                                <TaskItem key={lastTask.id} task={lastTask} />
                             ))}
                     </div>
                 </div>
@@ -48,7 +44,10 @@ const Tasks = () => {
                         {tasks
                             .filter((task) => task.isCompleted)
                             .map((completedTasks) => (
-                                <p>{completedTasks.description}</p>
+                                <TaskItem
+                                    key={completedTasks.id}
+                                    task={completedTasks}
+                                />
                             ))}
                     </div>
                 </div>
