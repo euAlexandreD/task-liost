@@ -24,6 +24,13 @@ const AddTask = () => {
                     "A tarefa precisa de uma descrição para ser adicionada"
                 );
             }
+            await axios.post(
+                "https://alexandre-task-list-a09bfaff88b6.herokuapp.com/tasks",
+                {
+                    description: task,
+                    isCompleted: false,
+                }
+            );
         } catch (error) {}
     };
 
