@@ -6,6 +6,8 @@ import "./Tasks.scss";
 import AddTask from "./AddTask";
 
 const Tasks = () => {
+    const [tasks, setTasks] = useState([]);
+
     const fetchTasks = async () => {
         try {
             const { data } = await axios.get(
@@ -16,8 +18,6 @@ const Tasks = () => {
             console.log(error);
         }
     };
-
-    const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
         fetchTasks();
@@ -30,12 +30,16 @@ const Tasks = () => {
 
                 <div className="last-tasks">
                     <h3>Ultimas Tarefas</h3>
-                    <AddTask />
+                    <AddTask fetchTasks={fetchTasks} />
                     <div className="tasks-list">
                         {tasks
                             .filter((task) => task.isCompleted === false)
                             .map((lastTask) => (
-                                <TaskItem key={lastTask.id} task={lastTask} />
+                                <TaskItem
+                                    key={lastTask.id}
+                                    task={lastTask}
+                                    fetchTasks={fetchTasks}
+                                />
                             ))}
                     </div>
                 </div>
@@ -49,6 +53,7 @@ const Tasks = () => {
                                 <TaskItem
                                     key={completedTasks.id}
                                     task={completedTasks}
+                                    fetchTasks={fetchTasks}
                                 />
                             ))}
                     </div>
