@@ -48,6 +48,7 @@ const AddTask = ({ fetchTasks }) => {
                     label="Adicionar Tarefa..."
                     value={task}
                     onChange={onChange}
+                    onEnterPress={hendleTaskAdittion}
                 />
                 <CustomButton onClick={hendleTaskAdittion}>
                     <FaPlus size={14} color="#ffffff" />
