@@ -3,6 +3,7 @@ import axios from "axios";
 import TaskItem from "./TaskItem";
 
 import "./Tasks.scss";
+import AddTask from "./AddTask";
 
 const Tasks = () => {
     const fetchTasks = async () => {
@@ -29,6 +30,7 @@ const Tasks = () => {
 
                 <div className="last-tasks">
                     <h3>Ultimas Tarefas</h3>
+                    <AddTask />
                     <div className="tasks-list">
                         {tasks
                             .filter((task) => task.isCompleted === false)
