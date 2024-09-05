@@ -25,7 +25,7 @@ const AddTask = ({ fetchTasks }) => {
                 );
             }
             await axios.post(
-                "https://alexandre-task-list-a09bfaff88b6.herokuapp.com/tasks",
+                `${process.env.REACT_APP_API_URL}/tasks`,
                 {
                     description: task,
                     isCompleted: false,

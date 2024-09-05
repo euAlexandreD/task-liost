@@ -11,7 +11,7 @@ const Tasks = () => {
     const fetchTasks = async () => {
         try {
             const { data } = await axios.get(
-                "https://alexandre-task-list-a09bfaff88b6.herokuapp.com/tasks"
+                `${process.env.REACT_APP_API_URL}/tasks`
             );
             setTasks(data);
         } catch (error) {

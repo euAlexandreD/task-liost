@@ -10,7 +10,7 @@ const TaskItem = ({ task, fetchTasks }) => {
     const handleTaskDelete = async ({ task }) => {
         try {
             await axios.delete(
-                `https://alexandre-task-list-a09bfaff88b6.herokuapp.com/tasks/${task._id}`
+                `${process.env.REACT_APP_API_URL}/tasks/${task._id}`
             );
 
             await fetchTasks();
@@ -24,7 +24,7 @@ const TaskItem = ({ task, fetchTasks }) => {
     const handleTaskCompletionChange = async (e) => {
         try {
             await axios.patch(
-                `https://alexandre-task-list-a09bfaff88b6.herokuapp.com/tasks/${task._id}`,
+                `${process.env.REACT_APP_API_URL}/tasks/${task._id}`,
                 {
                     isCompleted: e.target.checked,
                 }
